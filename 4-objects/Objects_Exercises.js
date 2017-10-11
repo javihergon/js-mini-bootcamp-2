@@ -100,3 +100,21 @@ countCharacters("hello"); // => {"h": 1, "e": 1, "l": 2, "o": 1}
 select({a: 1, b: 2, c: 3}, ["a"]); // => {a: 1}
 select({a: 1, b: 2, c: 3}, ["a", "c"]); // => {a: 1, c: 3}
 select({a: 1, b: 2, c: 3}, ["a", "c", "d"]); // => {a: 1, c: 3}
+
+// 5. Write a function `extends` that accepts two objects as arguments, and
+//   *extends* all of the key/value pairs of the second one to the first one.
+
+//   ```js
+  function extend(obj1, obj2) {
+    // ...
+  for(var key in obj1) {
+    for(key in obj2) {
+      if(obj2[key] !== obj1[key]) {
+        obj1[key] = obj2[key];
+      }
+    }
+  }
+    return obj1;
+  }
+extend({a: 1}, {b: 2}); // => {a: 1, b: 2}
+extend({a: 1, c: 3}, {b: 2, c: 4}); // => {a: 1, b: 2, c: 4}
