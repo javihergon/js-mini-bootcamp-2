@@ -79,3 +79,24 @@ function countCharacters(s) {
     return obj;
     }
 countCharacters("hello"); // => {"h": 1, "e": 1, "l": 2, "o": 1}
+
+// 4. Write a function `select` that accepts two arguments: an object and an
+//   array. The **array** should contain names of keys that will be *selected* from
+//   the object:
+
+//   ```js
+  function select(obj, keys) {
+    // ...
+    var newObj = {};
+    for(var key in obj) {
+      for (var i = 0; i < keys.length; i++) {
+        if(obj[keys[i]] === obj[key]) {
+            newObj[key] = obj[key];
+        }
+      }
+    }
+    return newObj;
+  }
+select({a: 1, b: 2, c: 3}, ["a"]); // => {a: 1}
+select({a: 1, b: 2, c: 3}, ["a", "c"]); // => {a: 1, c: 3}
+select({a: 1, b: 2, c: 3}, ["a", "c", "d"]); // => {a: 1, c: 3}
